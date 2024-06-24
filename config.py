@@ -139,12 +139,12 @@ class Config():
 
         self.batch_size_valid = 1
         self.rand_seed = 7
-        run_sh_file = [f for f in os.listdir('.') if 'train.sh' == f] + [os.path.join('..', f) for f in os.listdir('..') if 'train.sh' == f]
-        with open(run_sh_file[0], 'r') as f:
-            lines = f.readlines()
-            self.save_last = int([l.strip() for l in lines if '"{}")'.format(self.task) in l and 'val_last=' in l][0].split('val_last=')[-1].split()[0])
-            self.save_step = int([l.strip() for l in lines if '"{}")'.format(self.task) in l and 'step=' in l][0].split('step=')[-1].split()[0])
-        self.val_step = [0, self.save_step][0]
+        # run_sh_file = [f for f in os.listdir('./BiRefNet') if 'train.sh' == f] + [os.path.join('..', f) for f in os.listdir('..') if 'train.sh' == f]
+        # with open(os.path.join('./BiRefNet', run_sh_file[0]), 'r') as f:
+        #     lines = f.readlines()
+        #     self.save_last = int([l.strip() for l in lines if '"{}")'.format(self.task) in l and 'val_last=' in l][0].split('val_last=')[-1].split()[0])
+        #     self.save_step = int([l.strip() for l in lines if '"{}")'.format(self.task) in l and 'step=' in l][0].split('step=')[-1].split()[0])
+        # self.val_step = [0, self.save_step][0]
 
     def print_task(self) -> None:
         # Return task for choosing settings in shell scripts.
@@ -153,4 +153,4 @@ class Config():
 if __name__ == '__main__':
     config = Config()
     config.print_task()
-    
+

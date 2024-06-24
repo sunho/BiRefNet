@@ -9,10 +9,10 @@ from time import sleep
 import argparse
 import torch
 
-from config import Config
-from models.birefnet import BiRefNet
-from dataset import MyData
-from evaluation.valid import valid
+from .config import Config
+from .models.birefnet import BiRefNet
+from .dataset import MyData
+from .evaluation.valid import valid
 
 
 parser = argparse.ArgumentParser(description='')

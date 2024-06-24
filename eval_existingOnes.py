@@ -3,8 +3,8 @@ import argparse
 from glob import glob
 import prettytable as pt
 
-from evaluation.evaluate import evaluator
-from config import Config
+from .evaluation.evaluate import evaluator
+from .config import Config
 
 
 config = Config()
@@ -48,7 +48,7 @@ def do_eval(args):
             )
             if config.task == 'DIS5K':
                 scores = [
-                    fm['curve'].max().round(3), wfm.round(3), mae.round(3), sm.round(3), em['curve'].mean().round(3), int(hce.round()), 
+                    fm['curve'].max().round(3), wfm.round(3), mae.round(3), sm.round(3), em['curve'].mean().round(3), int(hce.round()),
                     em['curve'].max().round(3), fm['curve'].mean().round(3), em['adp'].round(3), fm['adp'].round(3),
                 ]
             elif config.task == 'COD':
@@ -63,7 +63,7 @@ def do_eval(args):
                 ]
             elif config.task == 'DIS5K+HRSOD+HRS10K':
                 scores = [
-                    fm['curve'].max().round(3), wfm.round(3), mae.round(3), sm.round(3), em['curve'].mean().round(3), int(hce.round()), 
+                    fm['curve'].max().round(3), wfm.round(3), mae.round(3), sm.round(3), em['curve'].mean().round(3), int(hce.round()),
                     em['curve'].max().round(3), fm['curve'].mean().round(3), em['adp'].round(3), fm['adp'].round(3),
                 ]
             elif config.task == 'P3M-10k':
@@ -77,7 +77,7 @@ def do_eval(args):
                     fm['curve'].max().round(3), fm['curve'].mean().round(3), wfm.round(3),
                     em['adp'].round(3), fm['adp'].round(3), int(hce.round()),
                 ]
-            
+
             for idx_score, score in enumerate(scores):
                 scores[idx_score] = '.' + format(score, '.3f').split('.')[-1] if score <= 1  else format(score, '<4')
             records = [_data_name, _model_name] + scores

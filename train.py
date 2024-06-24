@@ -6,12 +6,12 @@ import torch.nn as nn
 import torch.optim as optim
 from torch.autograd import Variable
 
-from config import Config
-from loss import PixLoss, ClsLoss
-from dataset import MyData
-from models.birefnet import BiRefNet
-from utils import Logger, AverageMeter, set_seed, check_state_dict
-from evaluation.valid import valid
+from .config import Config
+from .loss import PixLoss, ClsLoss
+from .dataset import MyData
+from .models.birefnet import BiRefNet
+from .utils import Logger, AverageMeter, set_seed, check_state_dict
+from .evaluation.valid import valid
 
 import torch.multiprocessing as mp
 from torch.utils.data.distributed import DistributedSampler
@@ -149,7 +149,7 @@ class Trainer:
         # Setting Losses
         self.pix_loss = PixLoss()
         self.cls_loss = ClsLoss()
-        
+
         # Others
         self.loss_log = AverageMeter()
         if config.lambda_adv_g:

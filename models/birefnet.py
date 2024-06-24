@@ -3,15 +3,15 @@ import torch.nn as nn
 import torch.nn.functional as F
 from kornia.filters import laplacian
 
-from config import Config
-from dataset import class_labels_TR_sorted
-from models.backbones.build_backbone import build_backbone
-from models.modules.decoder_blocks import BasicDecBlk, ResBlk, HierarAttDecBlk
-from models.modules.lateral_blocks import BasicLatBlk
-from models.modules.aspp import ASPP, ASPPDeformable
-from models.modules.ing import *
-from models.refinement.refiner import Refiner, RefinerPVTInChannels4, RefUNet
-from models.refinement.stem_layer import StemLayer
+from ..config import Config
+from ..dataset import class_labels_TR_sorted
+from ..models.backbones.build_backbone import build_backbone
+from ..models.modules.decoder_blocks import BasicDecBlk, ResBlk, HierarAttDecBlk
+from ..models.modules.lateral_blocks import BasicLatBlk
+from ..models.modules.aspp import ASPP, ASPPDeformable
+from ..models.modules.ing import *
+from ..models.refinement.refiner import Refiner, RefinerPVTInChannels4, RefUNet
+from ..models.refinement.stem_layer import StemLayer
 
 
 class BiRefNet(nn.Module):
@@ -155,7 +155,7 @@ class Decoder(nn.Module):
                 self.gdt_convs_pred_4 = nn.Sequential(nn.Conv2d(_N, 1, 1, 1, 0))
                 self.gdt_convs_pred_3 = nn.Sequential(nn.Conv2d(_N, 1, 1, 1, 0))
                 self.gdt_convs_pred_2 = nn.Sequential(nn.Conv2d(_N, 1, 1, 1, 0))
-                
+
                 self.gdt_convs_attn_4 = nn.Sequential(nn.Conv2d(_N, 1, 1, 1, 0))
                 self.gdt_convs_attn_3 = nn.Sequential(nn.Conv2d(_N, 1, 1, 1, 0))
                 self.gdt_convs_attn_2 = nn.Sequential(nn.Conv2d(_N, 1, 1, 1, 0))

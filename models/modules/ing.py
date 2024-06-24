@@ -1,5 +1,5 @@
 import torch.nn as nn
-from models.modules.mlp import MLPLayer
+from ...models.modules.mlp import MLPLayer
 
 
 class BlockA(nn.Module):

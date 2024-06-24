@@ -1,8 +1,8 @@
 import torch
 import torch.nn as nn
-from models.modules.aspp import ASPP, ASPPDeformable
-from models.modules.attentions import PSA, SGE
-from config import Config
+from ...models.modules.aspp import ASPP, ASPPDeformable
+from ...models.modules.attentions import PSA, SGE
+from ...config import Config
 
 
 config = Config()
@@ -51,7 +51,7 @@ class ResBlk(nn.Module):
 
         self.conv_out = nn.Conv2d(inter_channels, out_channels, 3, 1, padding=1)
         self.bn_out = nn.BatchNorm2d(out_channels) if config.batch_size > 1 else nn.Identity()
-        
+
         self.conv_resi = nn.Conv2d(in_channels, out_channels, 1, 1, 0)
 
     def forward(self, x):
